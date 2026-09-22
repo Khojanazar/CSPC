@@ -14,14 +14,14 @@ conda activate cspc
 ## PW1 - Lab A: Reproducible Foundations
 
 **What I built:**
-- (one or two lines)
+-  A conda environment,a Git repository with a full branch and merge workflow,a test suite for the radioactive decay simulation and a speed benchmark comparing pure-Python and NumPy implementations.
 
 **Speed comparison (loop vs NumPy):**
-- loop : ... s
-- numpy : ... s
-- speed-up: ... x faster
+- loop : 1.623 s
+- numpy : 0.0003 s
+- speed-up: 5760.4x faster
 
 **Tests:** all passing? (yes / no)
-
+yes 
 **Conclusion:**
-- (2-3 sentences: what worked, what you learned, any problems)
+- The vectorized NumPy version was faster than the pure-Python loop-about 5760x on 200000 atoms—confirming that vectorization matters at scale. All three tests pass,including the check that the simulation's average matches the analytical decay law N0*exp(-lam*t) within tolerance.
