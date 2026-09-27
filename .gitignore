@@ -1,4 +1,6 @@
 __pycache__/
 *.pyc
 .pytest_cache/
-decay_observed.csv
+PW1/Lab A/decay_observed.csv
+figure.png
+.snakemake/
