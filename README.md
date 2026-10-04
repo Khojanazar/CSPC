@@ -52,3 +52,38 @@ yes
   side by side made the comparison straightforward. Automating the figure generation
   with Snakemake means the plot always stays in sync with the data without manually
   rerunning the script every time.
+## PW2 --- Lab B
+
+### Part 2 — Three routes to a minimum
+
+On the convex f(x) = (x-3)^2 + 1, all three methods give x = 3.00000 from x0 = 0.
+
+On g(x) = x^4 - 3x^2 + x + 5 the methods do not always agree:
+- x0 = 0: gradient descent (x = -1.30084) and SLSQP (x = -1.30086) reach the
+  global minimum, g = 1.486. Newton converges to x = 0.16994, where
+  g'' = -5.653 < 0, so it found a local maximum, not a minimum.
+- x0 = 2: gradient descent and Newton reach the local minimum x = 1.13090
+  (g = 3.930, g'' = 9.347 > 0). SLSQP, however, ended at the global minimum
+  x = -1.30064, jumping over the hill.
+
+Newton solves g'(x) = 0, so it can return a maximum; the sign of g'' must be
+checked. On a non-convex function both the starting point and the algorithm
+decide which minimum is found.
+
+### Part 3 — Reaction rate
+
+Fitted first-order rate constant: k = 0.2618 (expected about 0.25). The fitted
+curve C0*exp(-kt) passes through the noisy measurements (kinetics.png).
+
+### Part 4 — Chemical equilibrium (H2 + I2 <=> 2 HI)
+
+Newton (root-finding) and SLSQP (minimising k_imbalance(x)^2) agree: x = 0.6595.
+Equilibrium composition: H2 = 0.341 mol, I2 = 0.341 mol, HI = 1.319 mol.
+Plugging these back gives K of about 15, so the equilibrium condition holds.
+The plot (equilibrium.png) shows reactants falling and HI rising with x.
+
+### Part 5 (bonus) — Titration equivalence point
+
+The slope dpH/dV was computed with np.gradient and its maximum found with
+np.argmax. The equivalence point is at V = 50.00 mL (max slope = 4.00).
+titration.png shows the sharp pH jump and the slope peaking at 50 mL.
