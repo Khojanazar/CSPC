@@ -108,12 +108,11 @@ print(f"Naive Correlation (Benzene vs Malignancy): {r_benz_naive:.4f}")
 print(f"Naive Correlation (Cadmium vs Malignancy): {r_cad_naive:.4f}")
 
 # Task 7: Accounting for a third variable (Confounder: pollution_index)
-print("\n--- Adjusted Analysis (Controlling for Pollution Index) ---")
 # Restrict data to a narrow band of pollution_index to neutralize its confounding effect
 filtered_df = df_chem[(df_chem["pollution_index"] > 40) & (df_chem["pollution_index"] < 60)]
 
-r_benz_adj, _ = stats.pearsonr(filtered_df["benzene"], filtered_df["malignancy"])
-r_cad_adj, _ = stats.pearsonr(filtered_df["cadmium"], filtered_df["malignancy"])
+r_benz_adj, _ =stats.pearsonr(filtered_df["benzene"],filtered_df["malignancy"])
+r_cad_adj, _ =stats.pearsonr(filtered_df["cadmium"],filtered_df["malignancy"])
 
-print(f"Adjusted Correlation (Benzene vs Malignancy): {r_benz_adj:.4f}")
-print(f"Adjusted Correlation (Cadmium vs Malignancy): {r_cad_adj:.4f}")
+print(f"Adjusted Correlation (Benzene vs Malignancy):{r_benz_adj:.4f}")
+print(f"Adjusted Correlation (Cadmium vs Malignancy):{r_cad_adj:.4f}")
